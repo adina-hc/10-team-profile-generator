@@ -105,5 +105,4 @@ function templateCreator(arr) {
 `;
 };
 
-
-module.exports = htmlCreate, templateCreator
+module.exports = {htmlCreate, templateCreator}
