@@ -1,50 +1,40 @@
 // 1. Import required files and packages
 // require Files
 const Manager = require("./lib/Manager");
-const Intern = require("./lib/Intern");
 const Engineer = require("./lib/Engineer");
-// const Employee = require('./lib/Employee');
-
-// require npm inquirer package
+const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
-const emailValidator = require("email-validator");
-
-// require fs package
 const fs = require("fs");
+const templateCreator = require("./src/template");
 
+// To create a new html document & pass employee array
+//fs.writeFile("./dist/test.html", htmlCreate(), (err) => {
+//  if (err) throw err;
+//});
 // function to validate if answer by user is a number
 const isInt = (str) => {
   return !isNaN(str) && ID.isInteger(parseFloat(str));
 };
 
-// create html website
-function htmlCreate() {
-  return `
-        Bagles
-    `;
-}
-//pass employee array
-fs.writeFile("./dist/test.html", htmlCreate(), (err) => {
-  if (err) throw err;
-});
-
+const teamArr = [];
 // Prompt user for populating manager info
 const menu = () => {
   popMgr();
-  popTeam();
+  //htmlCreate();
 };
 // Populate Manager
 const popMgr = () => {
   console.log("Follow the prompts to create your team");
   inquirer.prompt(mgrQ).then((responses) => {
-    const mgr = new Mgr(
+    const mgr = new Manager(
       responses.mgrName,
       responses.mgrID,
       responses.mgrEmail,
-      responses.mgrOfficeNum
+      responses.officeNum
     );
     teamArr.push(mgr);
-    employeeId.push(responses.mgrID);
+    //employeeId.push(responses.mgrID);
+    popTeam();
   });
 };
 // Prompt user for adding employees to the team
@@ -58,7 +48,7 @@ const popTeam = () => {
         popInt();
         break;
       default:
-        htmlCreate();
+        templateCreator(teamArr);
     }
   });
 };
@@ -66,35 +56,34 @@ const popTeam = () => {
 // Manager variable
 const mgrQ = [
   {
-    name: `mgrName`,
-    type: `input`,
-    message: `What is the manager's name?`,
+    name: "mgrName",
+    type: "input",
+    message: "What is the manager's name?",
   },
   {
-    name: `mgrID`,
-    type: `number`,
-    message: `What is the managers's ID?`,
+    name: "mgrID",
+    type: "number",
+    message: "What is the managers's ID?",
   },
   {
-    name: `mgrEmail`,
-    type: `input`,
-    message: `What is the manager's email address?`,
-    validate: emailValidator,
+    name: "mgrEmail",
+    type: "input",
+    message: "What is the manager's email address?",
   },
   {
-    name: mgrOfficeNum,
-    type: number,
-    message: `What is the manager's Office number?`,
+    name: "officeNum",
+    type: "number",
+    message: "What is the manager's Office number?",
   },
 ];
 
 // Prompts for adding employees
 const teamQ = [
   {
-    name: position,
-    type: list,
-    message: `What is the employee's position?`,
-    choices: ("engineer", "intern", "none"),
+    name: "position",
+    type: "list",
+    message: "What is the employee's position?",
+    choices: ["Engineer", "Intern", "none"],
   },
 ];
 
@@ -104,42 +93,26 @@ const engQ = [
     type: "input",
     name: "engName",
     message: "Enter engineer's name",
-    validate: (value) => {
-      if (value) {
-        return true;
-      } else {
-        return "You must enter a name";
-      }
-    },
   },
   {
     name: "engID",
     type: "input",
     message: "Enter engineer's ID",
-    validate: (value) => {
-      if (!isNaN(value) && value.isInteger(parseFloat(value))) {
-        return "You must enter an ID number";
-      } else {
-        return true;
-      }
-    },
   },
   {
     name: "engEmail",
     type: "input",
     message: "Enter engineer's email address",
-    validate: emailValidator,
   },
   {
     name: "gitHub",
     type: "input",
     message: "Enter engineer's GitHub username",
-    validate: "",
   },
 ];
 
 // Prompts for entering intern data
-const internQ = [
+const intQ = [
   {
     name: "internName",
     type: "input",
@@ -168,7 +141,7 @@ const internQ = [
     name: "intEmail",
     type: "input",
     message: "Enter intern's email address: ",
-    validate: emailValidator,
+    validate: "",
   },
   {
     name: "intSchool",
@@ -187,9 +160,9 @@ const popEng = () => {
       responses.gitHub
     );
     teamArr.push(eng);
-    employeeId.push(responses.engID);
+    //employeeId.push(responses.engID);
+    popTeam();
   });
-  menu();
 };
 
 // Populate intern
@@ -202,8 +175,10 @@ const popInt = () => {
       responses.school
     );
     teamArr.push(intrn);
-    employeeId.push(responses.intID);
+    //employeeId.push(responses.intID);
   });
 
   menu();
 };
+
+menu();

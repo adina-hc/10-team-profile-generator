@@ -1,0 +1,28 @@
+{
+  "name": "10-team-profile-generator",
+  "version": "1.0.0",
+  "description": "Team Profile Generator...",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "inquirer": "^8.1.1"
+  },
+  "devDependencies": {
+    "jest": "^27.0.5"
+  },
+  "scripts": {
+    "test": "jest --verbose __tests__/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adina-hc/10-team-profile-generator.git"
+  },
+  "author": "Adina Henderson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adina-hc/10-team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/adina-hc/10-team-profile-generator#readme"
+}
