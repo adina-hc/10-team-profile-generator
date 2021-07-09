@@ -6,11 +6,12 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const fs = require("fs");
 const templateCreator = require("./src/template");
+const htmlCreate = require("./src/template");
 
 // To create a new html document & pass employee array
-fs.writeFile("./dist/test.html", htmlCreate(), (err) => {
- if (err) throw err;
-});
+// //fs.writeFile("./dist/test.html", htmlCreate(), (err) => {
+//  if (err) throw err;
+// });
 
 // function to validate if answer by user is a number
 const isInt = (str) => {
@@ -133,19 +134,18 @@ const intQ = [
     name: "intID",
     type: "input",
     message: "Enter intern's ID",
-    validate: (value) => {
-      if (!isNaN(value) && value.isInteger(parseFloat(value))) {
-        return "You must enter an ID number";
-      } else {
-        return true;
-      }
-    },
+    // validate: (value) => {
+    //   if (!isNaN(value) && value.isInteger(parseFloat(value))) {
+    //     return "You must enter an ID number";
+    //   } else {
+    //     return true;
+    //   }
+    // },
   },
   {
     name: "intEmail",
     type: "input",
     message: "Enter intern's email address: ",
-    validate: "",
   },
   {
     name: "intSchool",
