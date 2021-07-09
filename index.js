@@ -180,9 +180,8 @@ const popInt = () => {
     );
     teamArr.push(intrn);
     employeeId.push(responses.intID);
+    popTeam()
   });
-
-  menu();
 };
 
 menu();
