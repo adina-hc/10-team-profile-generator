@@ -25,6 +25,7 @@ function htmlCreate() {
     </header>
     <body>
         <section class="container-fluid">`;
+};
 
 // Function to create the html template
 function templateCreator(arr) {
