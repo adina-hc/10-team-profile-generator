@@ -1,9 +1,80 @@
-
-
+// Declare an array to populate the html document
 const htmlPage =[];
+// Function to create the html template
+function templateCreator(teamArr) {
+  for (i = 0; i < teamArr.length; i++) {
+    console.log(teamArr[i]);
+    console.log(teamArr[i].getRole());
+    if (teamArr[i] == "Manager") {
+      // Manager html template
+      const htmlMgr = (manager) => {
+        return `<!-- Manager's card -->
+        <div class="card d-inline-block" style="width: 18rem">
+            <img src="../Assets/purple-mgr.png" class="card-img-top" alt="Manager image" />
+            <div id="manager" class="card-body">
+            <h5 class="card-title">${manager.getName()}</h5>
+            <h6 class"card-title">Manager</h6>
+            <p class="card-text">
+            </p>
+            </div>
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item">ID: ${manager.getId()} </li>
+            <li class="list-group-item">eMail: <a href="mailto:${manager.getEmail()}">${manager.getEmail}</a> </li>
+            <li class="list-group-item">Office number: ${manager.getOfficeNumber()}</li>
+            </ul>
+        </div>`;
+        };
+        htmlPage.push(manager);
+    };
+    if (teamArr[i] == "Engineer") {
+      // Engineer html template
+      const htmlEng = (engineer) => {
+        return `<!-- Engineer's card -->  
+        <div class="card d-inline-block" style="width: 18rem">
+            <img src="../Assets/lilac-engineer.png" class="card-img-top" alt="Manager image" />
+            <div id="engineer" class="card-body">
+            <h5 class="card-title">${engineer.getName}</h5>
+            <h6 class"card-title">Engineer</h6>
+            <p class="card-text">
+            </p>
+            </div>
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item">ID: ${engineer.getId()} </li>
+            <li class="list-group-item">eMail: <a href="mailto:${engineer.getEmail}">${engineer.getEmail}</a> </li>
+            <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.gitHub}" target="_blank" rel="noopener noreferrer">${engineer.getGitHub}</a></li>
+            </ul>
+        </div>`;
+        };
+        htmlPage.push(engineer);
+    };
+    if (teamArr[i] == "Intern") {
+        const htmlInt = (intern) => {
+            return `<!-- Intern's card -->  
+        <div id="intern" class="card d-inline-block" style="width: 18rem">
+            <img src="../Assets/pink-intern.png" class="card-img-top" alt="Manager image" />
+            <div class="card-body">
+            <h5 class="card-title">${intern.getName()}</h5>
+            <h6 class"card-title">Intern</h6>
+            <p class="card-text">   
+            </p>
+            </div>
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item">ID: ${intern.getId()}</li>
+            <li class="list-group-item">eMail: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a> </li>
+            <li class="list-group-item">School: ${intern.school()}</li>
+            </ul>
+        </div>`;
+        };
+        htmlPage.push(intern);
+    };
+  };
+
+};
+
+
 
 // create html website
-function htmlCreate() {
+module.exports = function htmlCreate() {
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -28,86 +99,16 @@ function htmlCreate() {
         <h1 class="title">My Team</h1>
     </header>
     <body>
-        <section class="container-fluid">`;
+        <section class="container-fluid">
+        ${templateCreator(htmlPage)}
+        </section>
+    </body>
+    <!-- Bootstrap script-->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous"
+    />
+    </html>`
 };
-
-// Function to create the html template
-function templateCreator(arr) {
-  for (i = 0; i < arr.length; i++) {
-    console.log(arr[i]);
-    console.log(arr[i].getRole());
-    if (arr[i] == "Manager") {
-      // Manager html template
-      const htmlMgr = (manager) => {
-        return `<!-- Manager's card -->
-        <div class="card d-inline-block" style="width: 18rem">
-            <img src="../Assets/purple-mgr.png" class="card-img-top" alt="Manager image" />
-            <div id="manager" class="card-body">
-            <h5 class="card-title">${manager.getName()}</h5>
-            <h6 class"card-title">Manager</h6>
-            <p class="card-text">
-            </p>
-            </div>
-            <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${manager.getId()} </li>
-            <li class="list-group-item">eMail: <a href="mailto:${manager.getEmail()}">${manager.getEmail}</a> </li>
-            <li class="list-group-item">Office number: ${manager.getOfficeNumber()}</li>
-            </ul>
-        </div>`;
-        };
-    };
-    if (arr[i] == "Engineer") {
-      // Engineer html template
-      const htmlEng = (engineer) => {
-        return `<!-- Engineer's card -->  
-        <div class="card d-inline-block" style="width: 18rem">
-            <img src="../Assets/lilac-engineer.png" class="card-img-top" alt="Manager image" />
-            <div id="engineer" class="card-body">
-            <h5 class="card-title">${engineer.getName}</h5>
-            <h6 class"card-title">Engineer</h6>
-            <p class="card-text">
-            </p>
-            </div>
-            <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${engineer.getId()} </li>
-            <li class="list-group-item">eMail: <a href="mailto:${engineer.getEmail}">${engineer.getEmail}</a> </li>
-            <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.gitHub}" target="_blank" rel="noopener noreferrer">${engineer.getGitHub}</a></li>
-            </ul>
-        </div>`;
-        };
-    };
-    if (arr[i] == "Intern") {
-        const htmlInt = (intern) => {
-            return `<!-- Intern's card -->  
-        <div id="intern" class="card d-inline-block" style="width: 18rem">
-            <img src="../Assets/pink-intern.png" class="card-img-top" alt="Manager image" />
-            <div class="card-body">
-            <h5 class="card-title">${intern.getName()}</h5>
-            <h6 class"card-title">Intern</h6>
-            <p class="card-text">   
-            </p>
-            </div>
-            <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${intern.getId}</li>
-            <li class="list-group-item">eMail: <a href="mailto:${intern.getEmail}">${intern.getEmail}</a> </li>
-            <li class="list-group-item">School: ${intern.school}</li>
-            </ul>
-        </div>`;
-        };
-    };
-  };
-  return `
-  </section>
-  </body>
-  <!-- Bootstrap script-->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-    crossorigin="anonymous"
-  />
-</html>
-`;
-};
-
-module.exports = {htmlCreate, templateCreator}

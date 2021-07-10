@@ -5,9 +5,8 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const fs = require("fs");
-import { htmlCreate, templateCreator } from "./src/template";
-//const templateCreator = require("./src/template");
-//const htmlCreate = require("./src/template");
+const templateCreator = require("./src/template");
+const htmlCreate = require("./src/template");
 
 // To create a new html document & pass employee array
 fs.writeFile("./dist/test.html", htmlCreate(), (err) => {
