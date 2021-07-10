@@ -7,9 +7,6 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const {templateCreator, htmlCreate} = require("./src/template");
 
-
-
-
 // function to validate if answer by user is a number
 const isInt = (str) => {
   return !isNaN(str) && ID.isInteger(parseFloat(str));
@@ -64,22 +61,43 @@ const mgrQ = [
     name: "mgrName",
     type: "input",
     message: "What is the manager's name?",
+    validate: (value) => {
+      return value ? true : "You must enter a name";
+    },
   },
   {
     name: "mgrID",
     type: "number",
     message: "What is the managers's ID?",
+    validate: (value) => {
+      if (value) {
+        return true;
+      } else {
+        return "You must enter an ID";
+      }
+    },
   },
   {
     name: "mgrEmail",
     type: "input",
     message: "What is the manager's email address?",
+    validate: (response) => {
+      const validResp = response.match(/.+@.+\..+/);
+      return validResp ? true : "Please enter a valid e-mail address";
+    },
   },
   {
     name: "officeNum",
     type: "number",
     message: "What is the manager's Office number?",
-  },
+    validate: (value) => {
+      if (value) {
+        return true;
+      } else {
+        return "You must enter an Office Number";
+      }
+    },
+  }
 ];
 
 // Prompts for adding employees
@@ -98,21 +116,35 @@ const engQ = [
     type: "input",
     name: "engName",
     message: "Enter engineer's name",
+    validate: (value) => {
+      return value ? true : "You must enter a name";
+    },
   },
   {
     name: "engID",
     type: "input",
     message: "Enter engineer's ID",
+    validate: (response) => {
+      const correct = response.match(/^[1-9 \-]+$/);
+      return (correct) ? true : "The ID must be other than zero!";
+    },
   },
   {
     name: "engEmail",
     type: "input",
     message: "Enter engineer's email address",
+    validate: (response) => {
+      const validResp = response.match(/.+@.+\..+/);
+      return (validResp) ? true : "Please enter a valid e-mail address";
+    },
   },
   {
     name: "engGitHub",
     type: "input",
     message: "Enter engineer's GitHub username",
+    validate: (value) => {
+      return (value !== "") ? true : "You must enter a valid GitHub username";
+    },
   },
 ];
 
@@ -123,29 +155,26 @@ const intQ = [
     type: "input",
     message: "Enter intern's name",
     validate: (value) => {
-      if (value) {
-        return true;
-      } else {
-        return "You must enter a name";
-      }
+      return value ? true : "You must enter a name";
     },
   },
   {
     name: "intID",
     type: "input",
     message: "Enter intern's ID",
-    // validate: (value) => {
-    //   if (!isNaN(value) && value.isInteger(parseFloat(value))) {
-    //     return "You must enter an ID number";
-    //   } else {
-    //     return true;
-    //   }
-    // },
+    validate: (response) => {
+      const correct = response.match(/^[1-9 \-]+$/);
+      return correct ? true : "The ID must be other than zero!";
+    },
   },
   {
     name: "intEmail",
     type: "input",
     message: "Enter intern's email address: ",
+    validate: (response) => {
+      const validResp = response.match(/.+@.+\..+/);
+      return validResp ? true : "Please enter a valid e-mail address";
+    },
   },
   {
     name: "intSchool",
