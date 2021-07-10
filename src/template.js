@@ -1,3 +1,7 @@
+
+
+const htmlPage =[];
+
 // create html website
 function htmlCreate() {
     return `
@@ -78,14 +82,14 @@ function templateCreator(arr) {
         <div id="intern" class="card d-inline-block" style="width: 18rem">
             <img src="../Assets/pink-intern.png" class="card-img-top" alt="Manager image" />
             <div class="card-body">
-            <h5 class="card-title">${intern.name}</h5>
+            <h5 class="card-title">${intern.getName()}</h5>
             <h6 class"card-title">Intern</h6>
             <p class="card-text">   
             </p>
             </div>
             <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${intern.id}</li>
-            <li class="list-group-item">eMail: <a href="mailto:${intern.email}">${intern.email}</a> </li>
+            <li class="list-group-item">ID: ${intern.getId}</li>
+            <li class="list-group-item">eMail: <a href="mailto:${intern.getEmail}">${intern.getEmail}</a> </li>
             <li class="list-group-item">School: ${intern.school}</li>
             </ul>
         </div>`;
