@@ -57,7 +57,7 @@ templateCreator = (arr) => {
             </ul>
         </div>`;
       };
-      htmlPage.push(htmlMgr(arr[i]));
+      htmlPage.push(htmlEng(arr[i]));
     }
     if (arr[i].getRole() == "Intern") {
       const htmlInt = (intern) => {
@@ -77,7 +77,7 @@ templateCreator = (arr) => {
             </ul>
         </div>`;
       };
-      htmlPage.push(htmlMgr(arr[i]));
+      htmlPage.push(htmlInt(arr[i]));
     }
   }
   return htmlPage.join("");

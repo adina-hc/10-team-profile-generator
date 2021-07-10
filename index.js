@@ -51,7 +51,7 @@ const popTeam = () => {
         break;
       default:
         // To create a new html document & pass employee array
-        fs.writeFile("./dist/test.html", htmlCreate(teamArr), (err) => {
+        fs.writeFile("./dist/myTeam.html", htmlCreate(teamArr), (err) => {
           if (err) throw err;
         });
     }
@@ -110,7 +110,7 @@ const engQ = [
     message: "Enter engineer's email address",
   },
   {
-    name: "gitHub",
+    name: "engGitHub",
     type: "input",
     message: "Enter engineer's GitHub username",
   },
@@ -161,7 +161,7 @@ const popEng = () => {
       responses.engName,
       responses.engID,
       responses.engEmail,
-      responses.gitHub
+      responses.engGitHub
     );
     teamArr.push(eng);
     //employeeId.push(responses.engID);
