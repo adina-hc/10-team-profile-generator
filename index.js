@@ -5,13 +5,10 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const fs = require("fs");
-const templateCreator = require("./src/template");
-const htmlCreate = require("./src/template");
+const {templateCreator, htmlCreate} = require("./src/template");
 
-// To create a new html document & pass employee array
-fs.writeFile("./dist/test.html", htmlCreate(), (err) => {
- if (err) throw err;
-});
+
+
 
 // function to validate if answer by user is a number
 const isInt = (str) => {
@@ -25,7 +22,7 @@ const employeeId = [];
 // Prompt user for populating manager info
 const menu = () => {
   popMgr();
-  htmlCreate();
+
 };
 // Populate Manager
 const popMgr = () => {
@@ -38,7 +35,7 @@ const popMgr = () => {
       responses.officeNum
     );
     teamArr.push(mgr);
-    employeeId.push(responses.mgrID);
+    //employeeId.push(responses.mgrID);
     popTeam();
   });
 };
@@ -53,7 +50,10 @@ const popTeam = () => {
         popInt();
         break;
       default:
-        templateCreator(teamArr);
+        // To create a new html document & pass employee array
+        fs.writeFile("./dist/test.html", htmlCreate(teamArr), (err) => {
+          if (err) throw err;
+        });
     }
   });
 };
@@ -119,7 +119,7 @@ const engQ = [
 // Prompts for entering intern data
 const intQ = [
   {
-    name: "internName",
+    name: "intName",
     type: "input",
     message: "Enter intern's name",
     validate: (value) => {
@@ -164,7 +164,7 @@ const popEng = () => {
       responses.gitHub
     );
     teamArr.push(eng);
-    employeeId.push(responses.engID);
+    //employeeId.push(responses.engID);
     popTeam();
   });
 };
@@ -176,14 +176,20 @@ const popInt = () => {
       responses.intName,
       responses.intID,
       responses.intEmail,
-      responses.school
+      responses.intSchool
     );
     teamArr.push(intern);
-    employeeId.push(responses.intID);
+    //employeeId.push(responses.intID);
     popTeam()
   });
 };
 
+
+
 menu();
 
-module.exports = {teamArr};
+
+
+
+
+module.exports = { teamArr };

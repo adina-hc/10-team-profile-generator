@@ -1,87 +1,90 @@
-const teamArr = require("../index");
+
+// Declare an array to populate the html document
+const htmlPage = [];
+
 // Function to create the html template
-function templateCreator(arr) {
-  // Declare an array to populate the html document
-  const htmlPage =[];
+
+templateCreator = (arr) => {
   // Loop to go over responses
   for (i = 0; i < arr.length; i++) {
     console.log(arr[i]);
     console.log(arr[i].getRole());
-    if (arr[i] == "Manager") {
+    if (arr[i].getRole() == "Manager") {
       // Manager html template
       const htmlMgr = (manager) => {
         return `<!-- Manager's card -->
         <div class="card d-inline-block" style="width: 18rem">
             <img src="../Assets/purple-mgr.png" class="card-img-top" alt="Manager image" />
             <div id="manager" class="card-body">
-            <h5 class="card-title">${manager.getName()}</h5>
+            <h5 class="card-title">${manager.name}</h5>
             <h6 class"card-title">Manager</h6>
             <p class="card-text">
             </p>
             </div>
             <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${manager.getId()} </li>
-            <li class="list-group-item">eMail: <a href="mailto:${manager.getEmail()}">${
-          manager.getEmail
+            <li class="list-group-item">ID: ${manager.id} </li>
+            <li class="list-group-item">eMail: <a href="mailto:${manager.email}">${
+          manager.email
         }</a> </li>
-            <li class="list-group-item">Office number: ${manager.getOfficeNumber()}</li>
+            <li class="list-group-item">Office number: ${manager.officeNumber}</li>
             </ul>
         </div>`;
       };
-      htmlPage.push(manager);
+      htmlPage.push(htmlMgr(arr[i]));
     }
-    if (arr[i] == "Engineer") {
+    if (arr[i].getRole() == "Engineer") {
       // Engineer html template
       const htmlEng = (engineer) => {
         return `<!-- Engineer's card -->  
         <div class="card d-inline-block" style="width: 18rem">
             <img src="../Assets/lilac-engineer.png" class="card-img-top" alt="Manager image" />
             <div id="engineer" class="card-body">
-            <h5 class="card-title">${engineer.getName}</h5>
+            <h5 class="card-title">${engineer.name}</h5>
             <h6 class"card-title">Engineer</h6>
             <p class="card-text">
             </p>
             </div>
             <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${engineer.getId()} </li>
+            <li class="list-group-item">ID: ${engineer.id} </li>
             <li class="list-group-item">eMail: <a href="mailto:${
-              engineer.getEmail
-            }">${engineer.getEmail}</a> </li>
+              engineer.email
+            }">${engineer.email}</a> </li>
             <li class="list-group-item">GitHub: <a href="https://github.com/${
               engineer.gitHub
             }" target="_blank" rel="noopener noreferrer">${
-          engineer.getGitHub
+          engineer.gitHub
         }</a></li>
             </ul>
         </div>`;
       };
-      htmlPage.push(engineer);
+      htmlPage.push(htmlMgr(arr[i]));
     }
-    if (arr[i] == "Intern") {
+    if (arr[i].getRole() == "Intern") {
       const htmlInt = (intern) => {
         return `<!-- Intern's card -->  
         <div id="intern" class="card d-inline-block" style="width: 18rem">
             <img src="../Assets/pink-intern.png" class="card-img-top" alt="Manager image" />
             <div class="card-body">
-            <h5 class="card-title">${intern.getName()}</h5>
+            <h5 class="card-title">${intern.name}</h5>
             <h6 class"card-title">Intern</h6>
             <p class="card-text">   
             </p>
             </div>
             <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${intern.getId()}</li>
-            <li class="list-group-item">eMail: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a> </li>
-            <li class="list-group-item">School: ${intern.school()}</li>
+            <li class="list-group-item">ID: ${intern.id}</li>
+            <li class="list-group-item">eMail: <a href="mailto:${intern.email}">${intern.email}</a> </li>
+            <li class="list-group-item">School: ${intern.school}</li>
             </ul>
         </div>`;
       };
-      htmlPage.push(intern);
+      htmlPage.push(htmlMgr(arr[i]));
     }
   }
+  return htmlPage.join("");
 };
 
 // create html website
-module.exports = function htmlCreate() {
+function htmlCreate(teamArr) {
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -119,3 +122,5 @@ module.exports = function htmlCreate() {
     />
     </html>`
 };
+
+module.exports = {templateCreator, htmlCreate};
