@@ -1,4 +1,4 @@
-
+const teamArr = require("../index");
 // Function to create the html template
 function templateCreator(arr) {
   // Declare an array to populate the html document
@@ -28,7 +28,7 @@ function templateCreator(arr) {
             </ul>
         </div>`;
       };
-      htmlPage.push();
+      htmlPage.push(manager);
     }
     if (arr[i] == "Engineer") {
       // Engineer html template

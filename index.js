@@ -172,16 +172,18 @@ const popEng = () => {
 // Populate intern
 const popInt = () => {
   inquirer.prompt(intQ).then((responses) => {
-    const intrn = new Intern(
+    const intern = new Intern(
       responses.intName,
       responses.intID,
       responses.intEmail,
       responses.school
     );
-    teamArr.push(intrn);
+    teamArr.push(intern);
     employeeId.push(responses.intID);
     popTeam()
   });
 };
 
 menu();
+
+module.exports = {teamArr};
