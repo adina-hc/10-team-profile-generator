@@ -39,15 +39,15 @@ function templateCreator(arr) {
         <div class="card d-inline-block" style="width: 18rem">
             <img src="../Assets/purple-mgr.png" class="card-img-top" alt="Manager image" />
             <div id="manager" class="card-body">
-            <h5 class="card-title">${Manager.name}</h5>
+            <h5 class="card-title">${manager.getName()}</h5>
             <h6 class"card-title">Manager</h6>
             <p class="card-text">
             </p>
             </div>
             <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${Manager.id} </li>
-            <li class="list-group-item">eMail: <a href="mailto:${Manager.email}">${Manager.email}</a> </li>
-            <li class="list-group-item">Office number: ${Manager.officeNumber}</li>
+            <li class="list-group-item">ID: ${manager.getId()} </li>
+            <li class="list-group-item">eMail: <a href="mailto:${manager.getEmail()}">${manager.getEmail}</a> </li>
+            <li class="list-group-item">Office number: ${manager.getOfficeNumber()}</li>
             </ul>
         </div>`;
         };
@@ -59,15 +59,15 @@ function templateCreator(arr) {
         <div class="card d-inline-block" style="width: 18rem">
             <img src="../Assets/lilac-engineer.png" class="card-img-top" alt="Manager image" />
             <div id="engineer" class="card-body">
-            <h5 class="card-title">${engineer.name}</h5>
+            <h5 class="card-title">${engineer.getName}</h5>
             <h6 class"card-title">Engineer</h6>
             <p class="card-text">
             </p>
             </div>
             <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${engineer.id} </li>
-            <li class="list-group-item">eMail: <a href="mailto:${engineer.email}">${engineer.email}</a> </li>
-            <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.gitHub}" target="_blank" rel="noopener noreferrer">${engineer.gitHub}</a></li>
+            <li class="list-group-item">ID: ${engineer.getId()} </li>
+            <li class="list-group-item">eMail: <a href="mailto:${engineer.getEmail}">${engineer.getEmail}</a> </li>
+            <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.gitHub}" target="_blank" rel="noopener noreferrer">${engineer.getGitHub}</a></li>
             </ul>
         </div>`;
         };
