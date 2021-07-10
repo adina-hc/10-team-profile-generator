@@ -1,11 +1,13 @@
-// Declare an array to populate the html document
-const htmlPage =[];
+
 // Function to create the html template
-function templateCreator(teamArr) {
-  for (i = 0; i < teamArr.length; i++) {
-    console.log(teamArr[i]);
-    console.log(teamArr[i].getRole());
-    if (teamArr[i] == "Manager") {
+function templateCreator(arr) {
+  // Declare an array to populate the html document
+  const htmlPage =[];
+  // Loop to go over responses
+  for (i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+    console.log(arr[i].getRole());
+    if (arr[i] == "Manager") {
       // Manager html template
       const htmlMgr = (manager) => {
         return `<!-- Manager's card -->
@@ -19,14 +21,16 @@ function templateCreator(teamArr) {
             </div>
             <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${manager.getId()} </li>
-            <li class="list-group-item">eMail: <a href="mailto:${manager.getEmail()}">${manager.getEmail}</a> </li>
+            <li class="list-group-item">eMail: <a href="mailto:${manager.getEmail()}">${
+          manager.getEmail
+        }</a> </li>
             <li class="list-group-item">Office number: ${manager.getOfficeNumber()}</li>
             </ul>
         </div>`;
-        };
-        htmlPage.push(manager);
-    };
-    if (teamArr[i] == "Engineer") {
+      };
+      htmlPage.push();
+    }
+    if (arr[i] == "Engineer") {
       // Engineer html template
       const htmlEng = (engineer) => {
         return `<!-- Engineer's card -->  
@@ -40,16 +44,22 @@ function templateCreator(teamArr) {
             </div>
             <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${engineer.getId()} </li>
-            <li class="list-group-item">eMail: <a href="mailto:${engineer.getEmail}">${engineer.getEmail}</a> </li>
-            <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.gitHub}" target="_blank" rel="noopener noreferrer">${engineer.getGitHub}</a></li>
+            <li class="list-group-item">eMail: <a href="mailto:${
+              engineer.getEmail
+            }">${engineer.getEmail}</a> </li>
+            <li class="list-group-item">GitHub: <a href="https://github.com/${
+              engineer.gitHub
+            }" target="_blank" rel="noopener noreferrer">${
+          engineer.getGitHub
+        }</a></li>
             </ul>
         </div>`;
-        };
-        htmlPage.push(engineer);
-    };
-    if (teamArr[i] == "Intern") {
-        const htmlInt = (intern) => {
-            return `<!-- Intern's card -->  
+      };
+      htmlPage.push(engineer);
+    }
+    if (arr[i] == "Intern") {
+      const htmlInt = (intern) => {
+        return `<!-- Intern's card -->  
         <div id="intern" class="card d-inline-block" style="width: 18rem">
             <img src="../Assets/pink-intern.png" class="card-img-top" alt="Manager image" />
             <div class="card-body">
@@ -64,14 +74,11 @@ function templateCreator(teamArr) {
             <li class="list-group-item">School: ${intern.school()}</li>
             </ul>
         </div>`;
-        };
-        htmlPage.push(intern);
-    };
-  };
-
+      };
+      htmlPage.push(intern);
+    }
+  }
 };
-
-
 
 // create html website
 module.exports = function htmlCreate() {
@@ -100,7 +107,7 @@ module.exports = function htmlCreate() {
     </header>
     <body>
         <section class="container-fluid">
-        ${templateCreator(htmlPage)}
+        ${templateCreator(teamArr)}
         </section>
     </body>
     <!-- Bootstrap script-->

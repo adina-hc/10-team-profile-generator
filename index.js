@@ -1,4 +1,4 @@
-// 1. Import required files and packages
+// Import required files and packages
 // require Files
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
