@@ -50,9 +50,9 @@ templateCreator = (arr) => {
               engineer.email
             }">${engineer.email}</a> </li>
             <li class="list-group-item">GitHub: <a href="https://github.com/${
-              engineer.gitHub
+              engineer.github
             }" target="_blank" rel="noopener noreferrer">${
-          engineer.gitHub
+          engineer.github
         }</a></li>
             </ul>
         </div>`;
@@ -60,6 +60,7 @@ templateCreator = (arr) => {
       htmlPage.push(htmlEng(arr[i]));
     }
     if (arr[i].getRole() == "Intern") {
+      // Intern html template
       const htmlInt = (intern) => {
         return `<!-- Intern's card -->  
         <div id="intern" class="card d-inline-block" style="width: 18rem">
@@ -72,7 +73,7 @@ templateCreator = (arr) => {
             </div>
             <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${intern.id}</li>
-            <li class="list-group-item">eMail: <a href="mailto:${intern.email}">${intern.email}</a> </li>
+            <li class="list-group-item">eMail: <a href="mailto:${intern.email}" target="_blank" rel="noopener noreferrer">${intern.email}</a> </li>
             <li class="list-group-item">School: ${intern.school}</li>
             </ul>
         </div>`;
@@ -80,6 +81,7 @@ templateCreator = (arr) => {
       htmlPage.push(htmlInt(arr[i]));
     }
   }
+  // Join the selections to render them in the home page
   return htmlPage.join("");
 };
 
