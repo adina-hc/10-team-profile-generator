@@ -1,4 +1,4 @@
-# 10-team-profile-generator
+# Team-profile-generator
 
 
 ## Description
@@ -54,4 +54,4 @@ __________________
 
 ### Git Repo Link
 
-[GitHub Repo](https://github.com/adina-hc/10-team-profile-generator)
+[GitHub Repo](https://github.com/adina-hc/team-profile-generator)
